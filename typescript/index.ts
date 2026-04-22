@@ -19,6 +19,11 @@ switch (env) {
     allowedHosts.push("localhost");
 }
 
+// Extra hosts via env var, comma-separated. Required when deploying behind
+// a managed platform (e.g. Render assigns "<app>.onrender.com" as the Host).
+const extraHosts = process.env["ALLOWED_HOSTS"]?.split(",").map((h) => h.trim()).filter(Boolean) ?? [];
+allowedHosts.push(...extraHosts);
+
 const app = createMcpExpressApp({
   host: "0.0.0.0",
   allowedHosts,
