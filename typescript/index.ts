@@ -58,6 +58,11 @@ app.post("/mcp", async (req, res) => {
                 },
                 {
                   name: "patient/Observation.rs",
+                  required: true,
+                },
+                {
+                  name: "patient/MedicationRequest.rs",
+                  required: true,
                 },
                 {
                   name: "patient/MedicationStatement.rs",
